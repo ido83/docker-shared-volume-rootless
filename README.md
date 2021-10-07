@@ -7,7 +7,7 @@ use build.sh to build Docker image
 docker volume create --name Data-Volume
 
 # run first container
-docker run -it --rm --name=Container_v1 -v Data-Volume:/data-volume alpine1:latest
+docker run -it --rm --name=Container_v1 -v Data-Volume:/data-volume -w /data-volume alpine1:latest
 
 # run second container
-docker run -it --rm --name=Container_v2 --volumes-from Container_v1 alpine1:latest
+docker run -it --rm --name=Container_v2 --volumes-from Container_v1 -w /data-volume alpine1:latest
